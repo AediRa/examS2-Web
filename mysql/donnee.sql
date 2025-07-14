@@ -44,7 +44,7 @@ CREATE TABLE emprunt_emprunt (
     id_emprunt      INT    AUTO_INCREMENT      ,
     id_objet      INT         ,
     id_membre      INT       ,
-    
+    jours_emprunt INT ,
     date_emprunt   DATE       ,
     date_retour     DATE ,
     PRIMARY KEY (id_emprunt)
@@ -126,4 +126,5 @@ INSERT INTO emprunt_emprunt (id_objet, id_membre, date_emprunt, date_retour) VAL
 (2, 1, '2025-07-02', '2025-07-06'),
 (20, 3, '2025-07-01', '2025-07-09');
 
-CREATE OR REPLACE VIEW emprunt_v_liste_objet AS SELECT nom_objet FROM emprunt_emprunt JOIN emprunt_objet ON emprunt_emprunt.id_objet=emprunt_objet.id_objet;
+CREATE OR REPLACE VIEW emprunt_v_categorie_objet AS SELECT nom_categorie,emprunt_categorie_objet.id_categorie as id_categorie , id_objet,nom_objet,id_membre from emprunt_objet JOIN emprunt_categorie_objet ON emprunt_categorie_objet.id_categorie=emprunt_objet.id_categorie;
+CREATE OR REPLACE VIEW emprunt_v_liste_objet AS SELECT nom_categorie,nom_objet,emprunt_emprunt.id_objet as id_objet,id_categorie,date_emprunt,date_retour,emprunt_emprunt.id_membre as id_membre,id_emprunt , jours_emprunt  FROM emprunt_emprunt JOIN emprunt_v_categorie_objet ON emprunt_emprunt.id_objet=emprunt_v_categorie_objet.id_objet;

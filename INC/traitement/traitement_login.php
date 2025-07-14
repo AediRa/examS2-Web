@@ -1,5 +1,5 @@
 <?php
-include('../Pages/database.php');
+include('../pages/data.php');
 
     session_start();
 
@@ -18,7 +18,7 @@ include('../Pages/database.php');
     $_SESSION['Nom'] = $donnee['nom'];
     $ligne=mysqli_num_rows($resultat);
 
-    if($ligne==0){
+    if($ligne!=0){
         header("Location: ../../pages/login.php?erreur");
         exit;
     }
