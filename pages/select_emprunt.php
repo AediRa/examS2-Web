@@ -17,8 +17,9 @@ $id_objet=$_GET['id_objet'];
     <h3>Formulaire d'emprunt</h3>
     <form action="../INC/traitement/traitement_emprunt.php" method="post">
         <input type="number" name="jour">
-        <input type="hidden" name="id_objet">
+        <input type="hidden" name="id_objet" value="">
         <input type="submit" value="valider">
     </form>
+    <a href="accueil.php">retour</a>
 </body>
 </html>
